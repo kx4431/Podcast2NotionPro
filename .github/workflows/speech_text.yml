@@ -17,10 +17,12 @@ jobs:
         COOKIE: ${{ secrets.TONGYI_COOKIE }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  
+使用 ： actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5      
+使用 ： actions/setup-python@v4
         with:
           python-version: 3.9
       - name: Install dependencies
