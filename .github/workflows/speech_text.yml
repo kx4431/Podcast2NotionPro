@@ -4,38 +4,34 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 */3 * * *"
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-组 ： $ { { github.workflow } } -$ { { github.ref } }  
   cancel-in-progress: true
+
 jobs:
   sync:
     name: Sync
     runs-on: ubuntu-latest
     env:
-        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-        NOTION_PAGE: ${{ secrets.NOTION_PAGE }}
-        COOKIE: ${{ secrets.TONGYI_COOKIE }}
+      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      NOTION_PAGE: ${{ secrets.NOTION_PAGE }}
+      COOKIE: ${{ secrets.TONGYI_COOKIE }}
+      
     steps:
       - name: Checkout
-        uses: actions/checkout@v4  
-使用 ： actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5        
-使用 ： actions/setup-python@v5
-使用 ： actions/setup-python@v5                        
-使用： actions/setup-python@v5
-使用： actions/setup-python@v5    
-使用： actions/setup-python@v5
-使用： actions/setup-python@v5    
-使用： actions/setup-python@v5  
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: "3.9"
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
       - name: speech to text
         run: |
           python -u scripts/speech_text.py
