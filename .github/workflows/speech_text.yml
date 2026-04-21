@@ -6,6 +6,7 @@ on:
     - cron: "0 */3 * * *"
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
+组 ： $ { { github.workflow } } -$ { { github.ref } }  
   cancel-in-progress: true
 jobs:
   sync:
